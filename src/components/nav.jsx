@@ -1,3 +1,4 @@
+// Barra de navegación fija con enlaces a las secciones principales.
 function Nav() {
   return (
     <nav id="navbar">
@@ -25,7 +26,7 @@ function Nav() {
 
 export default Nav;
 
-// Nav
+// Cambia el estilo del nav cuando el usuario se desplaza por la página.
 window.addEventListener("scroll", () => {
   document
     .getElementById("navbar")

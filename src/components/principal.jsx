@@ -1,3 +1,4 @@
+// Hero principal de la landing con propuesta de valor y llamadas a la acción.
 function Principal() {
   return (
     <>
