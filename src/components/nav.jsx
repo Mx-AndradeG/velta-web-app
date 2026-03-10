@@ -2,7 +2,7 @@
 function Nav() {
   return (
     <nav id="navbar">
-      <div className="logo">Vercel</div>
+      <div className="logo">Velta</div>
       <ul className="nav-links">
         <li>
           <a href="#servicios">Servicios</a>
