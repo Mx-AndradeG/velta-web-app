@@ -1,3 +1,4 @@
+// Sección de prueba social con testimonios de clientes.
 function Testimonios() {
   return (
     <section

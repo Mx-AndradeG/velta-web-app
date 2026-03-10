@@ -8,14 +8,17 @@ import Faq from "./components/faq";
 import Footer from "./components/footer";
 import Contacto from "./components/contacto";
 
+// Utilidad global para desplazar la vista hasta una sección concreta.
 function scrollToSection(id) {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 }
 
+// Utilidad global para abrir enlaces de WhatsApp en una nueva pestaña.
 function openWhatsApp(url) {
   window.open(url, "_blank", "noopener,noreferrer");
 }
 
+// Composición principal de la landing page.
 function App() {
   return (
     <>
@@ -33,7 +36,7 @@ function App() {
 
 export default App;
 
-// Animate on scroll
+// Animación simple para mostrar elementos cuando entran al viewport.
 const observer = new IntersectionObserver(
   (entries) => {
     entries.forEach((e) => {
@@ -46,6 +49,7 @@ const observer = new IntersectionObserver(
   { threshold: 0.1 },
 );
 
+// Registra bloques visuales que deben aparecer con transición al hacer scroll.
 document
   .querySelectorAll(".svc-card, .proof-card, .test-card, .how-step")
   .forEach((el) => {

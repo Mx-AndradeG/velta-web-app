@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+// Lista base de preguntas frecuentes renderizada por el acordeón.
 const faqItems = [
   {
     question: "¿Cuánto cuesta una página con chatbot IA?",
@@ -33,9 +34,11 @@ const faqItems = [
   },
 ];
 
+// Acordeón de FAQ controlado con estado local de React.
 function Faq() {
   const [openIndex, setOpenIndex] = useState(null);
 
+  // Abre un item y cierra el anterior; si se vuelve a pulsar, lo cierra.
   const toggleItem = (index) => {
     setOpenIndex((currentIndex) => (currentIndex === index ? null : index));
   };

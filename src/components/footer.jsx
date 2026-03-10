@@ -1,3 +1,4 @@
+// Pie de página con enlaces secundarios y datos básicos de marca.
 function Footer() {
   return (
     <footer>

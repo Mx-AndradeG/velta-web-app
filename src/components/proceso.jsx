@@ -1,3 +1,4 @@
+// Sección que explica el proceso de trabajo y algunas métricas comerciales.
 function Proceso() {
   return (
     <>

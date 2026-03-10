@@ -1,3 +1,4 @@
+// Sección de contacto con formulario de captación y estado visual de éxito.
 function Contacto() {
   return (
     <section className="section form-section" id="contacto">

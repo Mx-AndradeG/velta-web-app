@@ -1,3 +1,4 @@
+// Sección que presenta los servicios principales en formato de tarjetas.
 function Servicios() {
   return (
     <section className="section" id="servicios">
