@@ -126,7 +126,7 @@ function Contacto() {
               className="btn-grad"
               onClick={() =>
                 openWhatsApp(
-                  "https://wa.me/524490000000?text=Hola,%20acabo%20de%20llenar%20el%20formulario%20de%20Novali",
+                  "https://wa.me/4492344656?text=Hola,%20acabo%20de%20llenar%20el%20formulario%20de%20Velta",
                 )
               }
             >
