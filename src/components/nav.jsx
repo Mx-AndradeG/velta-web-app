@@ -27,8 +27,10 @@ function Nav() {
 export default Nav;
 
 // Cambia el estilo del nav cuando el usuario se desplaza por la página.
-window.addEventListener("scroll", () => {
-  document
-    .getElementById("navbar")
-    .classList.toggle("scrolled", window.scrollY > 50);
-});
+if (typeof window !== "undefined") {
+  window.addEventListener("scroll", () => {
+    document
+      .getElementById("navbar")
+      .classList.toggle("scrolled", window.scrollY > 50);
+  });
+}
