@@ -62,7 +62,7 @@ function Faq() {
             style={{ fontSize: ".82rem", padding: ".75rem 1.8rem" }}
             onClick={() =>
               window.open(
-                "https://wa.me/524490000000",
+                "https://wa.me/4492344656",
                 "_blank",
                 "noopener,noreferrer",
               )
