@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366F1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#22D3EE;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background rounded square -->
+  <rect x="0" y="0" width="64" height="64" rx="14" fill="url(#g1)" />
+
+  <!-- V mark -->
+  <polyline
+    points="13,16 32,48 51,16"
+    fill="none"
+    stroke="white"
+    stroke-width="7"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <!-- Speed lines -->
+  <line x1="17" y1="54" x2="47" y2="54" stroke="rgba(255,255,255,0.35)" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="22" y1="59" x2="42" y2="59" stroke="rgba(255,255,255,0.2)" stroke-width="2" stroke-linecap="round"/>
+</svg>
