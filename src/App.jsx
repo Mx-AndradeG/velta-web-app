@@ -8,6 +8,7 @@ import Testimonios from "./components/testimonios";
 import Faq from "./components/faq";
 import Footer from "./components/footer";
 import Contacto from "./components/contacto";
+import VeltaChat from "./VeltaChat";
 
 function scrollToSection(id) {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -66,6 +67,7 @@ function App() {
       <Contacto />
       <Faq />
       <Footer />
+      <VeltaChat />
     </>
   );
 }
