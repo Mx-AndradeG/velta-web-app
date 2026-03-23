@@ -1,4 +1,6 @@
 // Sección de contacto con formulario de captación y estado visual de éxito.
+import { openWhatsApp } from "../utils/ui";
+
 function Contacto() {
   return (
     <section className="section form-section" id="contacto">

@@ -1,4 +1,5 @@
-// Barra de navegación fija con enlaces a las secciones principales.
+import { scrollToSection } from "../utils/ui";
+
 function Nav() {
   return (
     <nav id="navbar">
@@ -18,7 +19,7 @@ function Nav() {
         </li>
       </ul>
       <button className="nav-cta" onClick={() => scrollToSection("contacto")}>
-        Quiero mi página
+        Quiero mi pagina
       </button>
     </nav>
   );
@@ -26,11 +27,10 @@ function Nav() {
 
 export default Nav;
 
-// Cambia el estilo del nav cuando el usuario se desplaza por la página.
 if (typeof window !== "undefined") {
   window.addEventListener("scroll", () => {
     document
       .getElementById("navbar")
-      .classList.toggle("scrolled", window.scrollY > 50);
+      ?.classList.toggle("scrolled", window.scrollY > 50);
   });
 }

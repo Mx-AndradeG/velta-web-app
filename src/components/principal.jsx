@@ -1,4 +1,5 @@
-// Hero principal de la landing con propuesta de valor y llamadas a la acción.
+import { scrollToSection } from "../utils/ui";
+
 function Principal() {
   return (
     <>
@@ -8,20 +9,20 @@ function Principal() {
 
         <div className="hero-badge">
           <span className="badge-dot"></span>
-          Páginas web con Inteligencia Artificial · Aguascalientes
+          Paginas web con Inteligencia Artificial · Aguascalientes
         </div>
 
         <h1>
           Tu negocio merece una
           <br />
-          <span className="grad">página que trabaje</span>
+          <span className="grad">pagina que trabaje</span>
           <br />
-          mientras tú descansas.
+          mientras tu descansas.
         </h1>
 
         <p className="hero-sub">
           Creamos landing pages con agente de IA integrado que responde
-          preguntas, agenda citas y captura clientes, las 24 horas del día.
+          preguntas, agenda citas y captura clientes, las 24 horas del dia.
         </p>
 
         <div className="hero-actions">
@@ -29,7 +30,7 @@ function Principal() {
             className="btn-grad"
             onClick={() => scrollToSection("contacto")}
           >
-            Quiero mi página gratis {"->"}
+            Quiero mi pagina gratis {"->"}
           </button>
           <button
             className="btn-ghost"
@@ -83,13 +84,13 @@ function Principal() {
                   ASISTENTE IA
                 </div>
                 <div className="mock-chat-bubble">
-                  ¡Hola! ¿En qué te puedo ayudar? 👋
+                  Hola. En que te puedo ayudar?
                 </div>
                 <div className="mock-chat-bubble user">
                   Quiero agendar una cita
                 </div>
                 <div className="mock-chat-bubble">
-                  ¡Claro! ¿Qué día te viene mejor?
+                  Claro. Que dia te viene mejor?
                 </div>
               </div>
             </div>
@@ -97,7 +98,7 @@ function Principal() {
         </div>
       </section>
       <div className="logos-strip" style={{ position: "relative", zIndex: 1 }}>
-        <span className="logos-label">Negocios que ya confían en nosotros</span>
+        <span className="logos-label">Negocios que ya confian en nosotros</span>
         <div className="logos-row">
           <span className="logo-item">DentPlus</span>
           <span className="logo-item">Barber&Co</span>
