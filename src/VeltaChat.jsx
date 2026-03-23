@@ -3,34 +3,124 @@ import { useState, useRef, useEffect } from "react";
 // ─── CONFIG POR CLIENTE ──────────────────────────────────────────────────────
 // Solo cambia este objeto para cada cliente nuevo
 const NEGOCIO = {
-  nombre: "Restaurante El Patio",
-  giro: "restaurante",
-  servicios: "Comida mexicana tradicional, desayunos, comidas corridas y cenas",
-  horario: "Lunes a sábado 8am–10pm, domingos 9am–6pm",
-  telefono: "+52 449 123 4567",
-  whatsapp: "524491234567",
-  direccion: "Centro histórico, Aguascalientes",
-  precio_promedio: "$120–180 MXN por persona",
-  cita_url: "", // URL de Calendly si aplica
+  clientId: "velta-demo",
+  nombre: "Velta",
+  giro: "agencia de presencia digital con IA",
+  servicios: `
+    - Landing Page Profesional: desde $8,000 MXN (diseño único para tu giro, optimizada para móvil)
+    - Landing Page + Agente de IA Integrado: desde $1,000 MXN/mes (responde preguntas, captura leads, agenda citas)
+    - Landing Page + Agente de IA Integrado + Agendado Automático con Google Calendar : desde $1,299 MXN/mes (responde preguntas, captura leads, agenda citas)
+    - Sistema POS: cotización personalizada (ventas, inventario y reportes)
+  `,
+  proceso: `
+    1. Platicamos 30 min (sin costo ni compromiso)
+    2. Propuesta y boceto en 24 horas
+    3. Construimos y configuramos en menos de 7 días
+    4. Publicamos con dominio, hosting y chatbot funcionando
+  `,
+  garantias:
+    "Sin contratos de permanencia · Entrega en 7 días · Soporte por WhatsApp incluido",
+  ubicacion: "Aguascalientes, México",
+  whatsapp: "524492344656",
+  tiempo_entrega: "5 a 7 días hábiles",
+  primera_consulta: "gratis",
 };
 
-const SYSTEM_PROMPT = `Eres el asistente virtual de ${NEGOCIO.nombre}, un negocio de ${NEGOCIO.giro} en Aguascalientes, México.
+const SERVICE_CATALOG = [
+  {
+    id: "1",
+    emoji: "🌐",
+    name: "Landing Page Profesional",
+    keywords: ["landing", "pagina", "web", "landing page"],
+    shortcuts: ["1"],
+  },
+  {
+    id: "2",
+    emoji: "🤖",
+    name: "Landing Page + Agente de IA",
+    keywords: ["ia", "chatbot", "bot", "agente"],
+    shortcuts: ["2"],
+  },
+  {
+    id: "3",
+    emoji: "📅",
+    name: "Landing Page + Agente de IA Integrado + Agendado Automático con Google Calendar",
+    keywords: ["ia", "chatbot", "bot", "agente", "calendario"],
+    shortcuts: ["3"],
+  },
+  {
+    id: "4",
+    emoji: "🧾",
+    name: "Sistema POS",
+    keywords: ["pos", "inventario", "ventas", "sistema"],
+    shortcuts: ["4"],
+  },
+];
 
-Tu trabajo es atender a los clientes de forma amable, natural y en español mexicano. Eres breve y directo — máximo 2-3 oraciones por respuesta.
+const SERVICE_LIST = SERVICE_CATALOG.map(
+  (service) => `${service.id}. ${service.emoji} ${service.name}`,
+).join("\n");
 
-Información del negocio:
-- Servicios: ${NEGOCIO.servicios}
-- Horario: ${NEGOCIO.horario}
-- Teléfono: ${NEGOCIO.telefono}
-- Dirección: ${NEGOCIO.direccion}
-- Precio promedio: ${NEGOCIO.precio_promedio}
+const SERVICE_SHORTCUTS = SERVICE_CATALOG.map(
+  (service) =>
+    `${service.id} = ${service.shortcuts.join(", ")}; palabras clave: ${service.keywords.join(", ")}`,
+).join("\n");
 
-Reglas importantes:
-1. Si preguntan por reservación o cita, pide su nombre y número de WhatsApp
-2. Si no sabes algo, di "Te comunico con el equipo" y pide su WhatsApp
-3. Nunca inventes precios ni información que no tienes
-4. Siempre termina ofreciendo ayuda adicional
-5. Si el cliente quiere hablar con una persona, da el número de WhatsApp: ${NEGOCIO.whatsapp}`;
+const SYSTEM_PROMPT = `Eres el asistente virtual de Velta, una agencia de Aguascalientes que crea páginas web con IA para negocios locales.
+
+Tu personalidad: amable, directo y en español mexicano natural. Máximo 2-3 oraciones por respuesta. Nunca digas "claro que sí" ni "por supuesto".
+
+LO QUE OFRECEMOS:
+- Landing Page Profesional desde $8,000 MXN — diseño único para tu giro, optimizada para móvil
+- Agente de IA Integrado desde $1,000 MXN/mes — responde preguntas, captura clientes y agenda citas 24/7
+- Sistema POS — cotización personalizada para control de ventas e inventario
+- Integración con WhatsApp Business — add-on disponible
+- Agendado automático con Google Calendar — incluido en plan Estándar
+- Mantenimiento y soporte por WhatsApp — incluido en mensualidad
+
+SERVICIOS PARA ELEGIR:
+${SERVICE_LIST}
+
+PROCESO:
+1. Plática de 30 min sin costo
+2. Propuesta y boceto en 24 horas
+3. Desarrollo y configuración
+4. Tu página en vivo en menos de 7 días
+
+GARANTÍAS:
+- Sin contratos de permanencia
+- Si cancelas, tu página sigue activa 30 días más
+- Puedes llevarte el código sin costo adicional
+- Primera consulta completamente gratis
+
+PREGUNTAS FRECUENTES:
+- ¿Cuánto cuesta? Setup desde $8,000 MXN + $1,000 MXN/mes
+- ¿Cuándo está lista? 5 a 7 días hábiles
+- ¿Necesito saber de tecnología? No, nosotros nos encargamos de todo
+- ¿El chatbot entiende preguntas? Sí, usa IA avanzada entrenada con la info de tu negocio
+
+FLUJOS IMPORTANTES:
+- Si piden una cita, llamada o agendar en fecha y hora especifica: ve reuniendo los datos poco a poco, un dato faltante por mensaje
+- Si ya tienes servicio, fecha, hora, nombre y WhatsApp, debes intentar agendar en Google Calendar
+- Si el sistema confirma la cita, responde como cita confirmada
+- Si el sistema no la confirma, no digas que quedo agendada
+- Solo usa el flujo de "te contactaremos en menos de 24 horas" cuando el cliente pida informes o consulta general sin fecha y hora especificas
+- Cuando necesites que elijan servicio, muéstralo en lista numerada
+- El cliente puede elegir servicio diciendo solo el número o una palabra clave corta
+- Atajos válidos por servicio:
+${SERVICE_SHORTCUTS}
+- Orden recomendado para pedir datos de cita: servicio, fecha, hora, nombre, WhatsApp y al final email opcional
+- Nunca pidas todos los datos en bloque si todavía faltan; pregunta solo por el siguiente dato faltante y continua con la platica del agente para cotinuar recabando la informacion no le muestres o digas que no agendaste sigue con la platica
+- Cuando ya tengas todos los datos requeridos, entonces intenta agendar
+- Si piden una consulta o más información: pide su nombre y WhatsApp, confirma que los contactarán en menos de 24 horas
+- Si preguntan por precio: da el precio exacto sin rodeos y ofrece la consulta gratis
+- Si no sabes algo: di "Te comunico con el equipo" y pide su WhatsApp
+- Si quieren hablar con alguien: da el WhatsApp ${NEGOCIO.whatsapp}
+
+RESTRICCIONES:
+- Nunca inventes precios o servicios que no están en la lista
+- Nunca confirmes una cita si el sistema no la confirma
+- No hables de temas fuera de Velta y sus servicios`;
 
 // ─── ESTILOS ─────────────────────────────────────────────────────────────────
 const styles = {
@@ -137,10 +227,16 @@ export default function VeltaChat() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          clientId: NEGOCIO.clientId,
           messages: newMessages,
           systemPrompt: SYSTEM_PROMPT,
+          serviceCatalog: SERVICE_CATALOG,
         }),
       });
+
+      if (!res.ok) {
+        throw new Error("La API del chat devolvio un error");
+      }
 
       const data = await res.json();
       setMessages((prev) => [
@@ -248,6 +344,7 @@ export default function VeltaChat() {
                     color: m.role === "user" ? "#fff" : "#d4d4e8",
                     fontSize: "13px",
                     lineHeight: "1.5",
+                    whiteSpace: "pre-wrap",
                     border:
                       m.role === "assistant"
                         ? "1px solid rgba(91,127,255,0.2)"

@@ -10,17 +10,8 @@ import Footer from "./components/footer";
 import Contacto from "./components/contacto";
 import VeltaChat from "./VeltaChat";
 
-function scrollToSection(id) {
-  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-}
-
-function openWhatsApp(url) {
-  window.open(url, "_blank", "noopener,noreferrer");
-}
-
 function App() {
   useEffect(() => {
-    // Scroll listener para el navbar
     const handleScroll = () => {
       document
         .getElementById("navbar")
@@ -28,13 +19,12 @@ function App() {
     };
     window.addEventListener("scroll", handleScroll);
 
-    // IntersectionObserver para animaciones al entrar al viewport
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.style.opacity = "1";
-            e.target.style.transform = "translateY(0)";
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
           }
         });
       },
@@ -43,14 +33,13 @@ function App() {
 
     document
       .querySelectorAll(".svc-card, .proof-card, .test-card, .how-step")
-      .forEach((el) => {
-        el.style.opacity = "0";
-        el.style.transform = "translateY(24px)";
-        el.style.transition = "opacity .6s ease, transform .6s ease";
-        observer.observe(el);
+      .forEach((element) => {
+        element.style.opacity = "0";
+        element.style.transform = "translateY(24px)";
+        element.style.transition = "opacity .6s ease, transform .6s ease";
+        observer.observe(element);
       });
 
-    // Limpieza al desmontar
     return () => {
       window.removeEventListener("scroll", handleScroll);
       observer.disconnect();
