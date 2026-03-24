@@ -3,7 +3,7 @@ import { scrollToSection } from "../utils/ui";
 function Nav() {
   return (
     <nav id="navbar">
-      <div className="logo">Velta</div>
+      <div className="logo">logikstudio</div>
       <ul className="nav-links">
         <li>
           <a href="#servicios">Servicios</a>

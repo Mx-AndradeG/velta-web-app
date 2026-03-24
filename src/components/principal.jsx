@@ -30,7 +30,7 @@ function Principal() {
             className="btn-grad"
             onClick={() => scrollToSection("contacto")}
           >
-            Quiero mi pagina gratis {"->"}
+            Quiero mi pagina demo gratis {"->"}
           </button>
           <button
             className="btn-ghost"
