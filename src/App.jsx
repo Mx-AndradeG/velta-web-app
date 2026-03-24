@@ -8,6 +8,7 @@ import Testimonios from "./components/testimonios";
 import Faq from "./components/faq";
 import Footer from "./components/footer";
 import Contacto from "./components/contacto";
+import Paquetes from "./components/paquetes";
 import VeltaChat from "./VeltaChat";
 
 function App() {
@@ -32,7 +33,9 @@ function App() {
     );
 
     document
-      .querySelectorAll(".svc-card, .proof-card, .test-card, .how-step")
+      .querySelectorAll(
+        ".svc-card, .proof-card, .test-card, .how-step, .package-card",
+      )
       .forEach((element) => {
         element.style.opacity = "0";
         element.style.transform = "translateY(24px)";
@@ -53,6 +56,7 @@ function App() {
       <Servicios />
       <Proceso />
       <Testimonios />
+      <Paquetes />
       <Contacto />
       <Faq />
       <Footer />
