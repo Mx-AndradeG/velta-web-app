@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from "react";
 // Solo cambia este objeto para cada cliente nuevo
 const NEGOCIO = {
   clientId: "velta-demo",
-  nombre: "Velta",
+  nombre: "logikstudio",
   giro: "agencia de presencia digital con IA",
   servicios: `
     - Landing Page Profesional: desde $8,000 MXN (diseño único para tu giro, optimizada para móvil)
@@ -66,7 +66,7 @@ const SERVICE_SHORTCUTS = SERVICE_CATALOG.map(
     `${service.id} = ${service.shortcuts.join(", ")}; palabras clave: ${service.keywords.join(", ")}`,
 ).join("\n");
 
-const SYSTEM_PROMPT = `Eres el asistente virtual de Velta, una agencia de Aguascalientes que crea páginas web con IA para negocios locales.
+const SYSTEM_PROMPT = `Eres el asistente virtual de logikstudio, una agencia de Aguascalientes que crea páginas web con IA para negocios locales.
 
 Tu personalidad: amable, directo y en español mexicano natural. Máximo 2-3 oraciones por respuesta. Nunca digas "claro que sí" ni "por supuesto".
 
@@ -120,7 +120,7 @@ ${SERVICE_SHORTCUTS}
 RESTRICCIONES:
 - Nunca inventes precios o servicios que no están en la lista
 - Nunca confirmes una cita si el sistema no la confirma
-- No hables de temas fuera de Velta y sus servicios`;
+- No hables de temas fuera de logikstudio y sus servicios`;
 
 // ─── ESTILOS ─────────────────────────────────────────────────────────────────
 const styles = {
@@ -445,7 +445,7 @@ export default function VeltaChat() {
               color: "#444460",
             }}
           >
-            Powered by <span style={{ color: "#5B7FFF" }}>Velta</span> · IA para
+            Powered by <span style={{ color: "#5B7FFF" }}>logikstudio</span> · IA para
             negocios locales
           </div>
         </div>

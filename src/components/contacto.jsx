@@ -128,7 +128,7 @@ function Contacto() {
               className="btn-grad"
               onClick={() =>
                 openWhatsApp(
-                  "https://wa.me/4492344656?text=Hola,%20acabo%20de%20llenar%20el%20formulario%20de%20Velta",
+                  "https://wa.me/4492344656?text=Hola,%20acabo%20de%20llenar%20el%20formulario%20de%20logikstudio",
                 )
               }
             >

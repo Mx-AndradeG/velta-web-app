@@ -3,7 +3,7 @@ function Footer() {
   return (
     <footer>
       <div className="logo" style={{ fontSize: "1.2rem" }}>
-        Velta
+        logikstudio
       </div>
       <div className="f-links">
         <a href="#">Privacidad</a>
@@ -13,7 +13,7 @@ function Footer() {
           WhatsApp
         </a>
       </div>
-      <div className="f-copy">© 2025 Velta. Aguascalientes, México.</div>
+      <div className="f-copy">© 2025 logikstudio. Aguascalientes, México.</div>
     </footer>
   );
 }
