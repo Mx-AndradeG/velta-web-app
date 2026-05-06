@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 
 // ─── CONFIG POR CLIENTE ──────────────────────────────────────────────────────
-// Solo cambia este objeto para cada cliente nuevo
 const NEGOCIO = {
   clientId: "velta-demo",
   nombre: "logikstudio",
@@ -122,81 +121,98 @@ RESTRICCIONES:
 - Nunca confirmes una cita si el sistema no la confirma
 - No hables de temas fuera de logikstudio y sus servicios`;
 
-// ─── ESTILOS ─────────────────────────────────────────────────────────────────
-const styles = {
-  // Botón flotante
-  fab: {
-    position: "fixed",
-    bottom: "24px",
-    right: "24px",
-    width: "56px",
-    height: "56px",
-    borderRadius: "50%",
-    background: "#3A5FE8",
-    border: "none",
-    cursor: "pointer",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    zIndex: 9999,
-    boxShadow: "0 4px 20px rgba(58,95,232,0.4)",
-    transition: "transform 0.2s, box-shadow 0.2s",
-  },
-  // Ventana del chat
-  window: {
-    position: "fixed",
-    bottom: "92px",
-    right: "24px",
-    width: "360px",
-    height: "500px",
-    background: "#080812",
-    borderRadius: "20px",
-    border: "1px solid rgba(91,127,255,0.2)",
-    display: "flex",
-    flexDirection: "column",
-    zIndex: 9998,
-    overflow: "hidden",
-    boxShadow: "0 20px 60px rgba(0,0,0,0.5)",
-    fontFamily: "'Plus Jakarta Sans', sans-serif",
-  },
-  header: {
-    background: "#13132A",
-    padding: "16px 20px",
-    display: "flex",
-    alignItems: "center",
-    gap: "12px",
-    borderBottom: "1px solid rgba(91,127,255,0.15)",
-  },
-  avatar: {
-    width: "36px",
-    height: "36px",
-    borderRadius: "50%",
-    background: "#3A5FE8",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    flexShrink: 0,
-  },
-  messages: {
-    flex: 1,
-    overflowY: "auto",
-    padding: "16px",
-    display: "flex",
-    flexDirection: "column",
-    gap: "10px",
-  },
-  inputRow: {
-    padding: "12px 16px",
-    borderTop: "1px solid rgba(91,127,255,0.15)",
-    background: "#13132A",
-    display: "flex",
-    gap: "8px",
-    alignItems: "center",
-  },
-};
+// ─── ESTILOS POR TEMA ────────────────────────────────────────────────────────
+function buildStyles(isDark) {
+  return {
+    fab: {
+      position: "fixed",
+      bottom: "24px",
+      right: "24px",
+      width: "56px",
+      height: "56px",
+      borderRadius: "16px",
+      background: "linear-gradient(135deg, #8b5cf6, #22d3ee)",
+      border: "none",
+      cursor: "pointer",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      zIndex: 9999,
+      boxShadow: "0 6px 24px rgba(139,92,246,0.5), 0 2px 8px rgba(0,0,0,0.3)",
+      transition: "transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s",
+    },
+    window: {
+      position: "fixed",
+      bottom: "92px",
+      right: "24px",
+      width: "360px",
+      height: "520px",
+      background: isDark ? "#08061a" : "#ffffff",
+      borderRadius: "20px",
+      border: isDark
+        ? "1px solid rgba(139,92,246,0.2)"
+        : "1px solid rgba(124,58,237,0.18)",
+      display: "flex",
+      flexDirection: "column",
+      zIndex: 9998,
+      overflow: "hidden",
+      boxShadow: isDark
+        ? "0 24px 64px rgba(0,0,0,0.55), 0 0 0 1px rgba(139,92,246,0.1)"
+        : "0 24px 64px rgba(124,58,237,0.14), 0 0 0 1px rgba(124,58,237,0.08)",
+      fontFamily: "'Plus Jakarta Sans', sans-serif",
+      transition: "background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease",
+    },
+    header: {
+      background: isDark
+        ? "linear-gradient(135deg, #12103a, #0f0c28)"
+        : "linear-gradient(135deg, #f0eeff, #e8e4ff)",
+      padding: "16px 20px",
+      display: "flex",
+      alignItems: "center",
+      gap: "12px",
+      borderBottom: isDark
+        ? "1px solid rgba(139,92,246,0.15)"
+        : "1px solid rgba(124,58,237,0.14)",
+      transition: "background 0.4s ease",
+    },
+    avatar: {
+      width: "36px",
+      height: "36px",
+      borderRadius: "10px",
+      background: "linear-gradient(135deg, #8b5cf6, #22d3ee)",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      flexShrink: 0,
+      boxShadow: "0 4px 12px rgba(139,92,246,0.4)",
+    },
+    messages: {
+      flex: 1,
+      overflowY: "auto",
+      padding: "16px",
+      display: "flex",
+      flexDirection: "column",
+      gap: "10px",
+      background: isDark ? "#08061a" : "#f8f7ff",
+      transition: "background 0.4s ease",
+    },
+    inputRow: {
+      padding: "12px 16px",
+      borderTop: isDark
+        ? "1px solid rgba(139,92,246,0.12)"
+        : "1px solid rgba(124,58,237,0.12)",
+      background: isDark ? "#0f0c28" : "#f0eeff",
+      display: "flex",
+      gap: "8px",
+      alignItems: "center",
+      transition: "background 0.4s ease",
+    },
+  };
+}
 
 // ─── COMPONENTE ───────────────────────────────────────────────────────────────
-export default function VeltaChat() {
+export default function VeltaChat({ isDark = true }) {
+  const S = buildStyles(isDark);
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState([
     {
@@ -265,12 +281,11 @@ export default function VeltaChat() {
 
   return (
     <>
-      {/* Ventana de chat */}
       {open && (
-        <div style={styles.window}>
+        <div style={S.window}>
           {/* Header */}
-          <div style={styles.header}>
-            <div style={styles.avatar}>
+          <div style={S.header}>
+            <div style={S.avatar}>
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                 <path
                   d="M9 2L15 13H3L9 2Z"
@@ -283,25 +298,27 @@ export default function VeltaChat() {
               </svg>
             </div>
             <div style={{ flex: 1 }}>
-              <div style={{ fontSize: "13px", fontWeight: 600, color: "#fff" }}>
+              <div style={{ fontSize: "13px", fontWeight: 700, color: isDark ? "#fff" : "#1a1745", letterSpacing: "-0.01em" }}>
                 {NEGOCIO.nombre}
               </div>
               <div
                 style={{
                   fontSize: "11px",
-                  color: "#22c55e",
+                  color: isDark ? "#22d3ee" : "#0891b2",
                   display: "flex",
                   alignItems: "center",
-                  gap: "4px",
+                  gap: "5px",
+                  marginTop: "1px",
                 }}
               >
                 <span
                   style={{
                     width: "6px",
                     height: "6px",
-                    background: "#22c55e",
+                    background: isDark ? "#22d3ee" : "#0891b2",
                     borderRadius: "50%",
                     display: "inline-block",
+                    boxShadow: isDark ? "0 0 6px rgba(34,211,238,0.7)" : "0 0 6px rgba(8,145,178,0.6)",
                   }}
                 />
                 En línea ahora
@@ -310,12 +327,19 @@ export default function VeltaChat() {
             <button
               onClick={() => setOpen(false)}
               style={{
-                background: "none",
-                border: "none",
-                color: "#8888aa",
+                background: isDark ? "rgba(139,92,246,0.12)" : "rgba(124,58,237,0.08)",
+                border: isDark ? "1px solid rgba(139,92,246,0.2)" : "1px solid rgba(124,58,237,0.18)",
+                borderRadius: "8px",
+                color: isDark ? "#9d9ab8" : "#7c7898",
                 cursor: "pointer",
-                fontSize: "18px",
+                fontSize: "16px",
                 lineHeight: 1,
+                width: "28px",
+                height: "28px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                transition: "background 0.2s, color 0.2s",
               }}
             >
               ×
@@ -323,7 +347,7 @@ export default function VeltaChat() {
           </div>
 
           {/* Mensajes */}
-          <div style={styles.messages}>
+          <div style={S.messages}>
             {messages.map((m, i) => (
               <div
                 key={i}
@@ -334,21 +358,33 @@ export default function VeltaChat() {
               >
                 <div
                   style={{
-                    maxWidth: "78%",
+                    maxWidth: "80%",
                     padding: "10px 14px",
                     borderRadius:
                       m.role === "user"
                         ? "16px 16px 4px 16px"
                         : "16px 16px 16px 4px",
-                    background: m.role === "user" ? "#3A5FE8" : "#1E1E40",
-                    color: m.role === "user" ? "#fff" : "#d4d4e8",
+                    background:
+                      m.role === "user"
+                        ? "linear-gradient(135deg, #8b5cf6, #6d28d9)"
+                        : isDark ? "rgba(30,20,64,0.9)" : "#ffffff",
+                    color:
+                      m.role === "user"
+                        ? "#fff"
+                        : isDark ? "#ccc8e8" : "#2d2660",
                     fontSize: "13px",
-                    lineHeight: "1.5",
+                    lineHeight: "1.55",
                     whiteSpace: "pre-wrap",
                     border:
                       m.role === "assistant"
-                        ? "1px solid rgba(91,127,255,0.2)"
+                        ? isDark
+                          ? "1px solid rgba(139,92,246,0.18)"
+                          : "1px solid rgba(124,58,237,0.16)"
                         : "none",
+                    boxShadow:
+                      m.role === "user"
+                        ? "0 4px 14px rgba(139,92,246,0.35)"
+                        : isDark ? "none" : "0 2px 8px rgba(124,58,237,0.08)",
                   }}
                 >
                   {m.content}
@@ -361,10 +397,12 @@ export default function VeltaChat() {
                   style={{
                     padding: "10px 16px",
                     borderRadius: "16px 16px 16px 4px",
-                    background: "#1E1E40",
-                    border: "1px solid rgba(91,127,255,0.2)",
+                    background: isDark ? "rgba(30,20,64,0.9)" : "#ffffff",
+                    border: isDark
+                      ? "1px solid rgba(139,92,246,0.18)"
+                      : "1px solid rgba(124,58,237,0.16)",
                     display: "flex",
-                    gap: "4px",
+                    gap: "5px",
                     alignItems: "center",
                   }}
                 >
@@ -375,9 +413,9 @@ export default function VeltaChat() {
                         width: "6px",
                         height: "6px",
                         borderRadius: "50%",
-                        background: "#5B7FFF",
+                        background: "#8b5cf6",
                         display: "inline-block",
-                        animation: `pulse 1.2s ease-in-out ${i * 0.2}s infinite`,
+                        animation: `chatPulse 1.2s ease-in-out ${i * 0.2}s infinite`,
                       }}
                     />
                   ))}
@@ -388,7 +426,7 @@ export default function VeltaChat() {
           </div>
 
           {/* Input */}
-          <div style={styles.inputRow}>
+          <div style={S.inputRow}>
             <input
               value={input}
               onChange={(e) => setInput(e.target.value)}
@@ -396,31 +434,39 @@ export default function VeltaChat() {
               placeholder="Escribe tu pregunta..."
               style={{
                 flex: 1,
-                background: "#080812",
-                border: "1px solid rgba(91,127,255,0.2)",
-                borderRadius: "10px",
+                background: isDark ? "rgba(139,92,246,0.06)" : "rgba(124,58,237,0.05)",
+                border: isDark
+                  ? "1px solid rgba(139,92,246,0.18)"
+                  : "1px solid rgba(124,58,237,0.18)",
+                borderRadius: "12px",
                 padding: "10px 14px",
-                color: "#fff",
+                color: isDark ? "#ede9fe" : "#2d2660",
                 fontSize: "13px",
                 outline: "none",
                 fontFamily: "inherit",
+                transition: "border-color 0.2s, background 0.4s, color 0.4s",
               }}
             />
             <button
               onClick={send}
               disabled={loading || !input.trim()}
               style={{
-                width: "38px",
-                height: "38px",
-                borderRadius: "10px",
-                background: input.trim() ? "#3A5FE8" : "#1E1E40",
-                border: "none",
+                width: "40px",
+                height: "40px",
+                borderRadius: "12px",
+                background: input.trim()
+                  ? "linear-gradient(135deg, #8b5cf6, #22d3ee)"
+                  : "rgba(30,20,64,0.8)",
+                border: "1px solid rgba(139,92,246,0.2)",
                 cursor: input.trim() ? "pointer" : "default",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 flexShrink: 0,
-                transition: "background 0.2s",
+                transition: "background 0.2s, transform 0.15s",
+                boxShadow: input.trim()
+                  ? "0 4px 14px rgba(139,92,246,0.4)"
+                  : "none",
               }}
             >
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -438,15 +484,30 @@ export default function VeltaChat() {
           {/* Footer branding */}
           <div
             style={{
-              padding: "6px 16px",
-              background: "#080812",
+              padding: "6px 16px 8px",
+              background: isDark ? "#08061a" : "#f0eeff",
               textAlign: "center",
               fontSize: "10px",
-              color: "#444460",
+              color: isDark ? "#3d3860" : "#9d9ab8",
+              borderTop: isDark
+                ? "1px solid rgba(139,92,246,0.08)"
+                : "1px solid rgba(124,58,237,0.1)",
+              transition: "background 0.4s ease",
             }}
           >
-            Powered by <span style={{ color: "#5B7FFF" }}>logikstudio</span> · IA para
-            negocios locales
+            Powered by{" "}
+            <span
+              style={{
+                background: "linear-gradient(90deg, #8b5cf6, #22d3ee)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                fontWeight: 600,
+              }}
+            >
+              logikstudio
+            </span>{" "}
+            · IA para negocios locales
           </div>
         </div>
       )}
@@ -454,15 +515,18 @@ export default function VeltaChat() {
       {/* FAB button */}
       <button
         onClick={() => setOpen((o) => !o)}
-        style={styles.fab}
+        style={S.fab}
         onMouseEnter={(e) => {
-          e.currentTarget.style.transform = "scale(1.08)";
-          e.currentTarget.style.boxShadow = "0 6px 28px rgba(58,95,232,0.55)";
+          e.currentTarget.style.transform = "scale(1.1) translateY(-2px)";
+          e.currentTarget.style.boxShadow =
+            "0 10px 32px rgba(139,92,246,0.65), 0 4px 12px rgba(0,0,0,0.3)";
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.transform = "scale(1)";
-          e.currentTarget.style.boxShadow = "0 4px 20px rgba(58,95,232,0.4)";
+          e.currentTarget.style.transform = "scale(1) translateY(0)";
+          e.currentTarget.style.boxShadow =
+            "0 6px 24px rgba(139,92,246,0.5), 0 2px 8px rgba(0,0,0,0.3)";
         }}
+        aria-label={open ? "Cerrar chat" : "Abrir chat"}
       >
         {open ? (
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -484,11 +548,10 @@ export default function VeltaChat() {
       </button>
 
       <style>{`
-        @keyframes pulse {
-          0%, 100% { opacity: 0.3; transform: scale(0.8); }
-          50% { opacity: 1; transform: scale(1); }
+        @keyframes chatPulse {
+          0%, 100% { opacity: 0.3; transform: scale(0.75); }
+          50% { opacity: 1; transform: scale(1.1); }
         }
-        * { box-sizing: border-box; }
       `}</style>
     </>
   );
