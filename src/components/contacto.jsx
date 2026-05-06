@@ -193,8 +193,8 @@ function Contacto() {
                   onChange={handleChange}
                 >
                   <option value="">Que te interesa mas?</option>
-                  <option>Landing page + chatbot IA</option>
-                  <option>Solo landing page</option>
+                  <option>Plan Asistente (landing + asistente digital)</option>
+                  <option>Plan Vitrina (solo landing page)</option>
                   <option>Sistema POS</option>
                   <option>Landing + POS</option>
                   <option>No se, quiero asesoria</option>

@@ -394,10 +394,37 @@ nav.scrolled {
   font-size: 1.1rem;
   color: var(--muted-lt);
   max-width: 580px;
-  margin-bottom: 3rem;
+  margin-bottom: 1.75rem;
   line-height: 1.8;
   opacity: 0;
   animation: fadeUp 0.8s 0.4s forwards;
+}
+
+.hero-perks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem 1.75rem;
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.52s forwards;
+}
+
+.hero-perk {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.82rem;
+  color: var(--muted-lt);
+  white-space: nowrap;
+}
+
+.hero-perk-check {
+  color: var(--cyan);
+  font-weight: 700;
+  font-size: 0.88rem;
+  line-height: 1;
+  flex-shrink: 0;
 }
 
 .hero-actions {
@@ -406,7 +433,7 @@ nav.scrolled {
   flex-wrap: wrap;
   justify-content: center;
   opacity: 0;
-  animation: fadeUp 0.8s 0.55s forwards;
+  animation: fadeUp 0.8s 0.66s forwards;
 }
 
 .btn-grad {
@@ -1035,8 +1062,20 @@ nav.scrolled {
   letter-spacing: 0.1em;
 }
 
+.test-quote {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 0.98rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--white);
+  margin-bottom: 0.9rem;
+  padding-left: 0.9rem;
+  border-left: 2px solid var(--indigo);
+  transition: color 0.4s ease;
+}
+
 .test-card p {
-  font-size: 0.87rem;
+  font-size: 0.85rem;
   color: var(--muted-lt);
   line-height: 1.85;
   margin-bottom: 1.4rem;
@@ -1438,7 +1477,46 @@ footer {
 
 .packages-header {
   max-width: 680px;
+  margin-bottom: 2.5rem;
+}
+
+.packages-anchors {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
   margin-bottom: 3rem;
+}
+
+.packages-anchor {
+  background: rgba(19, 17, 42, 0.45);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(139, 92, 246, 0.1);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  font-size: 0.83rem;
+  color: var(--muted-lt);
+  line-height: 1.65;
+  transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+
+.packages-anchor strong {
+  color: var(--white);
+  font-weight: 600;
+  transition: color 0.4s ease;
+}
+
+[data-theme="light"] .packages-anchor {
+  background: rgba(255, 255, 255, 0.75);
+  border-color: rgba(124, 58, 237, 0.12);
+}
+
+.package-price-note {
+  font-size: 0.74rem;
+  color: var(--cyan);
+  margin-top: -0.5rem;
+  margin-bottom: 0.9rem;
+  font-style: italic;
 }
 
 .packages-grid {
