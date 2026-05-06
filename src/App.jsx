@@ -15,7 +15,9 @@ function App() {
   const [isDark, setIsDark] = useState(() => {
     if (typeof window === "undefined") return true;
     const saved = localStorage.getItem("velta-theme");
-    return saved !== "light";
+    if (saved) return saved === "dark";
+    const hour = new Date().getHours();
+    return hour >= 18 || hour < 9;
   });
 
   useEffect(() => {
@@ -91,7 +93,7 @@ function App() {
       <Contacto />
       <Faq />
       <Footer />
-      <VeltaChat />
+      <VeltaChat isDark={isDark} />
     </>
   );
 }

@@ -121,81 +121,98 @@ RESTRICCIONES:
 - Nunca confirmes una cita si el sistema no la confirma
 - No hables de temas fuera de logikstudio y sus servicios`;
 
-// ─── ESTILOS ─────────────────────────────────────────────────────────────────
-const S = {
-  fab: {
-    position: "fixed",
-    bottom: "24px",
-    right: "24px",
-    width: "56px",
-    height: "56px",
-    borderRadius: "16px",
-    background: "linear-gradient(135deg, #8b5cf6, #22d3ee)",
-    border: "none",
-    cursor: "pointer",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    zIndex: 9999,
-    boxShadow: "0 6px 24px rgba(139,92,246,0.5), 0 2px 8px rgba(0,0,0,0.3)",
-    transition: "transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s",
-  },
-  window: {
-    position: "fixed",
-    bottom: "92px",
-    right: "24px",
-    width: "360px",
-    height: "520px",
-    background: "#08061a",
-    borderRadius: "20px",
-    border: "1px solid rgba(139,92,246,0.2)",
-    display: "flex",
-    flexDirection: "column",
-    zIndex: 9998,
-    overflow: "hidden",
-    boxShadow: "0 24px 64px rgba(0,0,0,0.55), 0 0 0 1px rgba(139,92,246,0.1)",
-    fontFamily: "'Plus Jakarta Sans', sans-serif",
-  },
-  header: {
-    background: "linear-gradient(135deg, #12103a, #0f0c28)",
-    padding: "16px 20px",
-    display: "flex",
-    alignItems: "center",
-    gap: "12px",
-    borderBottom: "1px solid rgba(139,92,246,0.15)",
-  },
-  avatar: {
-    width: "36px",
-    height: "36px",
-    borderRadius: "10px",
-    background: "linear-gradient(135deg, #8b5cf6, #22d3ee)",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    flexShrink: 0,
-    boxShadow: "0 4px 12px rgba(139,92,246,0.4)",
-  },
-  messages: {
-    flex: 1,
-    overflowY: "auto",
-    padding: "16px",
-    display: "flex",
-    flexDirection: "column",
-    gap: "10px",
-    background: "#08061a",
-  },
-  inputRow: {
-    padding: "12px 16px",
-    borderTop: "1px solid rgba(139,92,246,0.12)",
-    background: "#0f0c28",
-    display: "flex",
-    gap: "8px",
-    alignItems: "center",
-  },
-};
+// ─── ESTILOS POR TEMA ────────────────────────────────────────────────────────
+function buildStyles(isDark) {
+  return {
+    fab: {
+      position: "fixed",
+      bottom: "24px",
+      right: "24px",
+      width: "56px",
+      height: "56px",
+      borderRadius: "16px",
+      background: "linear-gradient(135deg, #8b5cf6, #22d3ee)",
+      border: "none",
+      cursor: "pointer",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      zIndex: 9999,
+      boxShadow: "0 6px 24px rgba(139,92,246,0.5), 0 2px 8px rgba(0,0,0,0.3)",
+      transition: "transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s",
+    },
+    window: {
+      position: "fixed",
+      bottom: "92px",
+      right: "24px",
+      width: "360px",
+      height: "520px",
+      background: isDark ? "#08061a" : "#ffffff",
+      borderRadius: "20px",
+      border: isDark
+        ? "1px solid rgba(139,92,246,0.2)"
+        : "1px solid rgba(124,58,237,0.18)",
+      display: "flex",
+      flexDirection: "column",
+      zIndex: 9998,
+      overflow: "hidden",
+      boxShadow: isDark
+        ? "0 24px 64px rgba(0,0,0,0.55), 0 0 0 1px rgba(139,92,246,0.1)"
+        : "0 24px 64px rgba(124,58,237,0.14), 0 0 0 1px rgba(124,58,237,0.08)",
+      fontFamily: "'Plus Jakarta Sans', sans-serif",
+      transition: "background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease",
+    },
+    header: {
+      background: isDark
+        ? "linear-gradient(135deg, #12103a, #0f0c28)"
+        : "linear-gradient(135deg, #f0eeff, #e8e4ff)",
+      padding: "16px 20px",
+      display: "flex",
+      alignItems: "center",
+      gap: "12px",
+      borderBottom: isDark
+        ? "1px solid rgba(139,92,246,0.15)"
+        : "1px solid rgba(124,58,237,0.14)",
+      transition: "background 0.4s ease",
+    },
+    avatar: {
+      width: "36px",
+      height: "36px",
+      borderRadius: "10px",
+      background: "linear-gradient(135deg, #8b5cf6, #22d3ee)",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      flexShrink: 0,
+      boxShadow: "0 4px 12px rgba(139,92,246,0.4)",
+    },
+    messages: {
+      flex: 1,
+      overflowY: "auto",
+      padding: "16px",
+      display: "flex",
+      flexDirection: "column",
+      gap: "10px",
+      background: isDark ? "#08061a" : "#f8f7ff",
+      transition: "background 0.4s ease",
+    },
+    inputRow: {
+      padding: "12px 16px",
+      borderTop: isDark
+        ? "1px solid rgba(139,92,246,0.12)"
+        : "1px solid rgba(124,58,237,0.12)",
+      background: isDark ? "#0f0c28" : "#f0eeff",
+      display: "flex",
+      gap: "8px",
+      alignItems: "center",
+      transition: "background 0.4s ease",
+    },
+  };
+}
 
 // ─── COMPONENTE ───────────────────────────────────────────────────────────────
-export default function VeltaChat() {
+export default function VeltaChat({ isDark = true }) {
+  const S = buildStyles(isDark);
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState([
     {
@@ -281,13 +298,13 @@ export default function VeltaChat() {
               </svg>
             </div>
             <div style={{ flex: 1 }}>
-              <div style={{ fontSize: "13px", fontWeight: 700, color: "#fff", letterSpacing: "-0.01em" }}>
+              <div style={{ fontSize: "13px", fontWeight: 700, color: isDark ? "#fff" : "#1a1745", letterSpacing: "-0.01em" }}>
                 {NEGOCIO.nombre}
               </div>
               <div
                 style={{
                   fontSize: "11px",
-                  color: "#22d3ee",
+                  color: isDark ? "#22d3ee" : "#0891b2",
                   display: "flex",
                   alignItems: "center",
                   gap: "5px",
@@ -298,10 +315,10 @@ export default function VeltaChat() {
                   style={{
                     width: "6px",
                     height: "6px",
-                    background: "#22d3ee",
+                    background: isDark ? "#22d3ee" : "#0891b2",
                     borderRadius: "50%",
                     display: "inline-block",
-                    boxShadow: "0 0 6px rgba(34,211,238,0.7)",
+                    boxShadow: isDark ? "0 0 6px rgba(34,211,238,0.7)" : "0 0 6px rgba(8,145,178,0.6)",
                   }}
                 />
                 En línea ahora
@@ -310,10 +327,10 @@ export default function VeltaChat() {
             <button
               onClick={() => setOpen(false)}
               style={{
-                background: "rgba(139,92,246,0.12)",
-                border: "1px solid rgba(139,92,246,0.2)",
+                background: isDark ? "rgba(139,92,246,0.12)" : "rgba(124,58,237,0.08)",
+                border: isDark ? "1px solid rgba(139,92,246,0.2)" : "1px solid rgba(124,58,237,0.18)",
                 borderRadius: "8px",
-                color: "#9d9ab8",
+                color: isDark ? "#9d9ab8" : "#7c7898",
                 cursor: "pointer",
                 fontSize: "16px",
                 lineHeight: 1,
@@ -350,19 +367,24 @@ export default function VeltaChat() {
                     background:
                       m.role === "user"
                         ? "linear-gradient(135deg, #8b5cf6, #6d28d9)"
-                        : "rgba(30,20,64,0.9)",
-                    color: m.role === "user" ? "#fff" : "#ccc8e8",
+                        : isDark ? "rgba(30,20,64,0.9)" : "#ffffff",
+                    color:
+                      m.role === "user"
+                        ? "#fff"
+                        : isDark ? "#ccc8e8" : "#2d2660",
                     fontSize: "13px",
                     lineHeight: "1.55",
                     whiteSpace: "pre-wrap",
                     border:
                       m.role === "assistant"
-                        ? "1px solid rgba(139,92,246,0.18)"
+                        ? isDark
+                          ? "1px solid rgba(139,92,246,0.18)"
+                          : "1px solid rgba(124,58,237,0.16)"
                         : "none",
                     boxShadow:
                       m.role === "user"
                         ? "0 4px 14px rgba(139,92,246,0.35)"
-                        : "none",
+                        : isDark ? "none" : "0 2px 8px rgba(124,58,237,0.08)",
                   }}
                 >
                   {m.content}
@@ -375,8 +397,10 @@ export default function VeltaChat() {
                   style={{
                     padding: "10px 16px",
                     borderRadius: "16px 16px 16px 4px",
-                    background: "rgba(30,20,64,0.9)",
-                    border: "1px solid rgba(139,92,246,0.18)",
+                    background: isDark ? "rgba(30,20,64,0.9)" : "#ffffff",
+                    border: isDark
+                      ? "1px solid rgba(139,92,246,0.18)"
+                      : "1px solid rgba(124,58,237,0.16)",
                     display: "flex",
                     gap: "5px",
                     alignItems: "center",
@@ -410,15 +434,17 @@ export default function VeltaChat() {
               placeholder="Escribe tu pregunta..."
               style={{
                 flex: 1,
-                background: "rgba(139,92,246,0.06)",
-                border: "1px solid rgba(139,92,246,0.18)",
+                background: isDark ? "rgba(139,92,246,0.06)" : "rgba(124,58,237,0.05)",
+                border: isDark
+                  ? "1px solid rgba(139,92,246,0.18)"
+                  : "1px solid rgba(124,58,237,0.18)",
                 borderRadius: "12px",
                 padding: "10px 14px",
-                color: "#ede9fe",
+                color: isDark ? "#ede9fe" : "#2d2660",
                 fontSize: "13px",
                 outline: "none",
                 fontFamily: "inherit",
-                transition: "border-color 0.2s",
+                transition: "border-color 0.2s, background 0.4s, color 0.4s",
               }}
             />
             <button
@@ -459,11 +485,14 @@ export default function VeltaChat() {
           <div
             style={{
               padding: "6px 16px 8px",
-              background: "#08061a",
+              background: isDark ? "#08061a" : "#f0eeff",
               textAlign: "center",
               fontSize: "10px",
-              color: "#3d3860",
-              borderTop: "1px solid rgba(139,92,246,0.08)",
+              color: isDark ? "#3d3860" : "#9d9ab8",
+              borderTop: isDark
+                ? "1px solid rgba(139,92,246,0.08)"
+                : "1px solid rgba(124,58,237,0.1)",
+              transition: "background 0.4s ease",
             }}
           >
             Powered by{" "}
