@@ -20,7 +20,7 @@ const NEGOCIO = {
   garantias:
     "Sin contratos de permanencia · Entrega en 7 días · Soporte por WhatsApp incluido",
   ubicacion: "Aguascalientes, México",
-  whatsapp: "524492344656",
+  whatsapp: "524422709543",
   tiempo_entrega: "5 a 7 días hábiles",
   primera_consulta: "gratis",
 };
@@ -139,7 +139,9 @@ function buildStyles(isDark) {
       justifyContent: "center",
       zIndex: 9999,
       boxShadow: "0 6px 24px rgba(139,92,246,0.5), 0 2px 8px rgba(0,0,0,0.3)",
-      transition: "transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s",
+      transition:
+        "transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s",
+      animation: "fabFloat 3.4s ease-in-out infinite",
     },
     window: {
       position: "fixed",
@@ -160,7 +162,8 @@ function buildStyles(isDark) {
         ? "0 24px 64px rgba(0,0,0,0.55), 0 0 0 1px rgba(139,92,246,0.1)"
         : "0 24px 64px rgba(124,58,237,0.14), 0 0 0 1px rgba(124,58,237,0.08)",
       fontFamily: "'Plus Jakarta Sans', sans-serif",
-      transition: "background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease",
+      transition:
+        "background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease",
     },
     header: {
       background: isDark
@@ -298,7 +301,14 @@ export default function VeltaChat({ isDark = true }) {
               </svg>
             </div>
             <div style={{ flex: 1 }}>
-              <div style={{ fontSize: "13px", fontWeight: 700, color: isDark ? "#fff" : "#1a1745", letterSpacing: "-0.01em" }}>
+              <div
+                style={{
+                  fontSize: "13px",
+                  fontWeight: 700,
+                  color: isDark ? "#fff" : "#1a1745",
+                  letterSpacing: "-0.01em",
+                }}
+              >
                 {NEGOCIO.nombre}
               </div>
               <div
@@ -318,7 +328,9 @@ export default function VeltaChat({ isDark = true }) {
                     background: isDark ? "#22d3ee" : "#0891b2",
                     borderRadius: "50%",
                     display: "inline-block",
-                    boxShadow: isDark ? "0 0 6px rgba(34,211,238,0.7)" : "0 0 6px rgba(8,145,178,0.6)",
+                    boxShadow: isDark
+                      ? "0 0 6px rgba(34,211,238,0.7)"
+                      : "0 0 6px rgba(8,145,178,0.6)",
                   }}
                 />
                 En línea ahora
@@ -327,8 +339,12 @@ export default function VeltaChat({ isDark = true }) {
             <button
               onClick={() => setOpen(false)}
               style={{
-                background: isDark ? "rgba(139,92,246,0.12)" : "rgba(124,58,237,0.08)",
-                border: isDark ? "1px solid rgba(139,92,246,0.2)" : "1px solid rgba(124,58,237,0.18)",
+                background: isDark
+                  ? "rgba(139,92,246,0.12)"
+                  : "rgba(124,58,237,0.08)",
+                border: isDark
+                  ? "1px solid rgba(139,92,246,0.2)"
+                  : "1px solid rgba(124,58,237,0.18)",
                 borderRadius: "8px",
                 color: isDark ? "#9d9ab8" : "#7c7898",
                 cursor: "pointer",
@@ -367,11 +383,15 @@ export default function VeltaChat({ isDark = true }) {
                     background:
                       m.role === "user"
                         ? "linear-gradient(135deg, #8b5cf6, #6d28d9)"
-                        : isDark ? "rgba(30,20,64,0.9)" : "#ffffff",
+                        : isDark
+                          ? "rgba(30,20,64,0.9)"
+                          : "#ffffff",
                     color:
                       m.role === "user"
                         ? "#fff"
-                        : isDark ? "#ccc8e8" : "#2d2660",
+                        : isDark
+                          ? "#ccc8e8"
+                          : "#2d2660",
                     fontSize: "13px",
                     lineHeight: "1.55",
                     whiteSpace: "pre-wrap",
@@ -384,7 +404,9 @@ export default function VeltaChat({ isDark = true }) {
                     boxShadow:
                       m.role === "user"
                         ? "0 4px 14px rgba(139,92,246,0.35)"
-                        : isDark ? "none" : "0 2px 8px rgba(124,58,237,0.08)",
+                        : isDark
+                          ? "none"
+                          : "0 2px 8px rgba(124,58,237,0.08)",
                   }}
                 >
                   {m.content}
@@ -434,7 +456,9 @@ export default function VeltaChat({ isDark = true }) {
               placeholder="Escribe tu pregunta..."
               style={{
                 flex: 1,
-                background: isDark ? "rgba(139,92,246,0.06)" : "rgba(124,58,237,0.05)",
+                background: isDark
+                  ? "rgba(139,92,246,0.06)"
+                  : "rgba(124,58,237,0.05)",
                 border: isDark
                   ? "1px solid rgba(139,92,246,0.18)"
                   : "1px solid rgba(124,58,237,0.18)",
@@ -517,12 +541,12 @@ export default function VeltaChat({ isDark = true }) {
         onClick={() => setOpen((o) => !o)}
         style={S.fab}
         onMouseEnter={(e) => {
-          e.currentTarget.style.transform = "scale(1.1) translateY(-2px)";
+          e.currentTarget.style.transform = "scale(1.12)";
           e.currentTarget.style.boxShadow =
             "0 10px 32px rgba(139,92,246,0.65), 0 4px 12px rgba(0,0,0,0.3)";
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.transform = "scale(1) translateY(0)";
+          e.currentTarget.style.transform = "";
           e.currentTarget.style.boxShadow =
             "0 6px 24px rgba(139,92,246,0.5), 0 2px 8px rgba(0,0,0,0.3)";
         }}
@@ -550,7 +574,11 @@ export default function VeltaChat({ isDark = true }) {
       <style>{`
         @keyframes chatPulse {
           0%, 100% { opacity: 0.3; transform: scale(0.75); }
-          50% { opacity: 1; transform: scale(1.1); }
+          50%       { opacity: 1;   transform: scale(1.1); }
+        }
+        @keyframes fabFloat {
+          0%, 100% { transform: translateY(0px); }
+          50%       { transform: translateY(-9px); }
         }
       `}</style>
     </>

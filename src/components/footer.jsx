@@ -9,7 +9,7 @@ function Footer() {
         <a href="#">Privacidad</a>
         <a href="#">Términos</a>
         <a href="#contacto">Contacto</a>
-        <a href="https://wa.me/4492344656" target="_blank" rel="noreferrer">
+        <a href="https://wa.me/4422709543" target="_blank" rel="noreferrer">
           WhatsApp
         </a>
       </div>

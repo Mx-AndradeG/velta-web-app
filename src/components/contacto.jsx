@@ -216,8 +216,12 @@ function Contacto() {
 
               {error ? <p className="form-error">{error}</p> : null}
 
-              <button className="btn-form" type="submit" disabled={isSubmitting}>
-                {isSubmitting ? "Enviando..." : "Quiero mi propuesta gratis ->"}
+              <button
+                className="btn-form"
+                type="submit"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Enviando..." : "Quiero mi propuesta en 24h ->"}
               </button>
               <p className="form-note">
                 Tus datos estan seguros. No enviamos spam.
@@ -239,7 +243,7 @@ function Contacto() {
                 className="btn-grad"
                 onClick={() =>
                   openWhatsApp(
-                    "https://wa.me/4492344656?text=Hola,%20acabo%20de%20llenar%20el%20formulario%20de%20Velta",
+                    "https://wa.me/4422709543?text=Hola,%20acabo%20de%20llenar%20el%20formulario%20de%20Velta",
                   )
                 }
               >
