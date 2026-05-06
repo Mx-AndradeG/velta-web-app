@@ -10,6 +10,7 @@ import Footer from "./components/footer";
 import Contacto from "./components/contacto";
 import Paquetes from "./components/paquetes";
 import VeltaChat from "./VeltaChat";
+import WhatsAppButton from "./components/WhatsAppButton";
 
 function App() {
   const [isDark, setIsDark] = useState(() => {
@@ -94,6 +95,7 @@ function App() {
       <Faq />
       <Footer />
       <VeltaChat isDark={isDark} />
+      <WhatsAppButton />
     </>
   );
 }
