@@ -74,7 +74,7 @@ LO QUE OFRECEMOS:
 - Agente de IA Integrado desde $1,000 MXN/mes — responde preguntas, captura clientes y agenda citas 24/7
 - Sistema POS — cotización personalizada para control de ventas e inventario
 - Integración con WhatsApp Business — add-on disponible
-- Agendado automático con Google Calendar — incluido en plan Estándar
+- Agendado automático con Google Calendar — incluido en plan Asistente
 - Mantenimiento y soporte por WhatsApp — incluido en mensualidad
 
 SERVICIOS PARA ELEGIR:

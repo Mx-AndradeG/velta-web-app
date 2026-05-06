@@ -30,7 +30,7 @@ const faqItems = [
   {
     question: "¿El chatbot puede agendar citas en mi Google Calendar?",
     answer:
-      "Sí, esa integración está disponible en el plan Estándar en adelante. El asistente verifica disponibilidad en tiempo real, agenda la cita y envía confirmación automática al cliente.",
+      "Sí, esa integración está disponible en el plan Asistente en adelante. El asistente verifica disponibilidad en tiempo real, agenda la cita y envía confirmación automática al cliente.",
   },
 ];
 

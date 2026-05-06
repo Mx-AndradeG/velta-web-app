@@ -55,18 +55,22 @@ function Proceso() {
       >
         <div className="proof-grid">
           <div className="proof-card">
-            <div className="proof-num">+40</div>
-            <div className="proof-label">Negocios con p&aacute;gina activa</div>
+            <div className="proof-num">40+</div>
+            <div className="proof-label">
+              negocios locales que ya capturan clientes mientras duermen
+            </div>
           </div>
           <div className="proof-card">
             <div className="proof-num">24/7</div>
             <div className="proof-label">
-              El agente de IA siempre disponible
+              tu chatbot atiende consultas aunque t&uacute; est&eacute;s apagado
             </div>
           </div>
           <div className="proof-card">
             <div className="proof-num">7 d&iacute;as</div>
-            <div className="proof-label">Tiempo promedio de entrega</div>
+            <div className="proof-label">
+              y tu negocio ya est&aacute; capturando clientes
+            </div>
           </div>
         </div>
       </section>

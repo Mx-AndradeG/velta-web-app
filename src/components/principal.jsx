@@ -10,34 +10,48 @@ function Principal() {
 
         <div className="hero-badge">
           <span className="badge-dot"></span>
-          P&aacute;ginas web con Inteligencia Artificial &middot; Aguascalientes
+          P&aacute;ginas web con IA &middot; Aguascalientes
         </div>
 
         <h1>
-          Tu negocio merece una
+          &iquest;Cu&aacute;ntos clientes perdiste anoche
           <br />
-          <span className="grad">p&aacute;gina que trabaje</span>
-          <br />
-          mientras t&uacute; descansas.
+          <span className="grad">mientras dorm&iacute;as?</span>
         </h1>
 
         <p className="hero-sub">
-          Creamos landing pages con agente de IA integrado que responde
-          preguntas, agenda citas y captura clientes, las 24 horas del d&iacute;a.
+          Cada mensaje sin responder en WhatsApp es un cliente que ya encontr&oacute;
+          a alguien m&aacute;s. Con logikstudio, tu negocio responde, cotiza y agenda
+          citas las 24 horas &mdash; sin que toques nada.
         </p>
+
+        <div className="hero-perks">
+          <span className="hero-perk">
+            <span className="hero-perk-check">✓</span>
+            Responde en segundos, incluso a las 3 am
+          </span>
+          <span className="hero-perk">
+            <span className="hero-perk-check">✓</span>
+            Citas agendadas solas en Google Calendar
+          </span>
+          <span className="hero-perk">
+            <span className="hero-perk-check">✓</span>
+            Lista en 7 d&iacute;as, sin tecnicismos
+          </span>
+        </div>
 
         <div className="hero-actions">
           <button
             className="btn-grad"
             onClick={() => scrollToSection("contacto")}
           >
-            Quiero mi p&aacute;gina demo gratis &rarr;
+            Ver mi demo gratis ahora
           </button>
           <button
             className="btn-ghost"
-            onClick={() => scrollToSection("servicios")}
+            onClick={() => scrollToSection("proceso")}
           >
-            Ver servicios
+            C&oacute;mo funciona
           </button>
         </div>
 
